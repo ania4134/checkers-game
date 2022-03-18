@@ -3,7 +3,7 @@ package com.kodilla.checkers;
 public class None implements Figure {
 
     @Override
-    public FigureColor getCOlor() {
+    public FigureColor getColor() {
         return null;
     }
 

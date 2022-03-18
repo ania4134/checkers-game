@@ -8,7 +8,7 @@ public class Pawn implements Figure {
     }
 
     @Override
-    public FigureColor getCOlor() {
+    public FigureColor getColor() {
         return color;
     }
 
