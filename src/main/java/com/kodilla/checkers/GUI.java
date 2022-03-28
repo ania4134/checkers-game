@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javax.management.monitor.GaugeMonitor;
 import java.awt.*;
+import javafx.scene.control.Button;
 
 public class GUI extends Application {
 
@@ -33,6 +34,8 @@ public class GUI extends Application {
         grid.setBackground(background);
 
         Scene scene = new Scene(grid, 600, 600, Color.BLACK);
+//        Button button = new Button();
+//        Scene sceneButton = new Scene(button, 200, 75);
 
         for(int i=0; i<8; i++) {
             grid.getColumnConstraints().add(new ColumnConstraints(75));
