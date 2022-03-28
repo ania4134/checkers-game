@@ -1,11 +1,16 @@
 package com.kodilla.checkers;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.layout.GridPane;
+import javafx.scene.control.Button;
+import javafx.scene.text.Font;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -370,6 +375,8 @@ public class Board {
     public void checkWinner() {
         int whitePawnsNumber = 0;
         int blackPawnsNumber = 0;
+        boolean whiteWon = false;
+        boolean blackWon = false;
 
         for (int col = 0; col < 8; col++) {
             for (int row = 0; row < 8; row++) {
@@ -380,5 +387,46 @@ public class Board {
                 }
             }
         }
+
+        if (whitePawnsNumber==0) {
+            showGameOver(BLACK);
+        } else if (blackPawnsNumber==0) {
+            showGameOver(WHITE);
+        }
+    }
+
+    private void showGameOver(FigureColor whoseWon) {
+        Stage primaryStage = new Stage();
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(25,25,25,25));
+
+        Scene scene = new Scene(gridPane, 250, 250);
+        primaryStage.setScene(scene);
+        if(whoseWon==WHITE) {
+            Text sceneTitle = new Text("Koniec gry \nWygraly biale!");
+            sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+            gridPane.add(sceneTitle, 0, 0, 2, 1);
+        } else {
+            Text sceneTitle = new Text("Koniec gry \nWygraly czarne!");
+            sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+            gridPane.add(sceneTitle, 0, 0, 2, 1);
+        }
+
+        Button btn = new Button("Zamknij");
+        GUI gui = new GUI();
+        btn.setOnAction((e) -> {
+            primaryStage.close();
+        });
+        HBox hbBtn = new HBox(10);
+        hbBtn.setAlignment(Pos.BOTTOM_CENTER);
+        hbBtn.getChildren().add(btn);
+        gridPane.add(hbBtn, 1, 4);
+
+        primaryStage.setTitle("Game over");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }
