@@ -368,7 +368,7 @@ public class Board {
             result = true;
         } else if (getFigure(col1, row1).getColor() == BLACK && getFigure(i, j).getColor() == WHITE)
             result = true;
-        else result = false;
+
         return result;
     }
 
@@ -387,7 +387,6 @@ public class Board {
                 }
             }
         }
-
         if (whitePawnsNumber==0) {
             showGameOver(BLACK);
         } else if (blackPawnsNumber==0) {
@@ -405,18 +404,19 @@ public class Board {
 
         Scene scene = new Scene(gridPane, 250, 250);
         primaryStage.setScene(scene);
+        String text = null;
+
         if(whoseWon==WHITE) {
-            Text sceneTitle = new Text("Koniec gry \nWygraly biale!");
-            sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-            gridPane.add(sceneTitle, 0, 0, 2, 1);
+            text = "Koniec gry \nWygraly biale!";
         } else {
-            Text sceneTitle = new Text("Koniec gry \nWygraly czarne!");
-            sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-            gridPane.add(sceneTitle, 0, 0, 2, 1);
+            text = "Koniec gry \nWygraly czarne!";
         }
 
+        Text sceneTitle = new Text(text);
+        sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+        gridPane.add(sceneTitle, 0, 0, 2, 1);
+
         Button btn = new Button("Zamknij");
-        GUI gui = new GUI();
         btn.setOnAction((e) -> {
             primaryStage.close();
         });
