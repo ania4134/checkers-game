@@ -209,7 +209,6 @@ public class Board {
                         setFigure(i, j, new None());
                     }
                 }
-
             } else {
                 for (int i = col1 - 1; i > col2; i--) {
                     for (int j = row1 - 1; j > row2; j--) {
@@ -265,7 +264,7 @@ public class Board {
     }
 
     private boolean isQueenWithRightColor(int col1, int row1) {
-        return getFigure(col1, row1) instanceof Queen;
+        return getFigure(col1, row1) instanceof Queen && getFigure(col1, row1).getColor() == whoseMove;
     }
 
     private boolean isDiagonally(int col1, int row1, int col2, int row2) {
@@ -329,33 +328,28 @@ public class Board {
 
     public boolean isHitAvailableforQueenFrom(int col1, int row1) {
         boolean result = false;
-        boolean result2 = false;
 
         for (int i = col1 + 1; i < 7; i++) {
             for (int j = row1 + 1; j < 7; j++) {
-                result = isEnemy(col1, row1, i, j);
-                result2 = result && getFigure(i+1, j+1).getColor()==null;
+                result = isEnemy(col1, row1, i, j) && getFigure(i+1, j+1).getColor()==null;
             }
         }
         if (result == false) {
             for (int i = col1 + 1; i < 7; i++) {
                 for (int j = row1 - 1; j > 0; j--) {
-                    result = isEnemy(col1, row1, i, j);
-                    result2 = result && getFigure(i+1, j-1).getColor()==null;
+                    result = isEnemy(col1, row1, i, j) && getFigure(i+1, j-1).getColor()==null;
                 }
             }
         } else if(result == false) {
             for (int i = col1 - 1; i > 0; i--) {
                 for (int j = row1 + 1; j < 7; j++) {
-                    result = isEnemy(col1, row1, i, j);
-                    result2 = result && getFigure(i-1, j+1).getColor()==null;
+                        result = isEnemy(col1, row1, i, j) && getFigure(i-1, j+1).getColor()==null;
                 }
             }
         }else if(result == false) {
             for (int i = col1 - 1; i > 0; i--) {
                 for (int j = row1 - 1; j > 0; j--) {
-                    result = isEnemy(col1, row1, i, j);
-                    result2 = result && getFigure(i-1, j-1).getColor()==null;
+                    result = isEnemy(col1, row1, i, j) && getFigure(i-1, j-1).getColor()==null;
                 }
             }
         }
@@ -368,7 +362,6 @@ public class Board {
             result = true;
         } else if (getFigure(col1, row1).getColor() == BLACK && getFigure(i, j).getColor() == WHITE)
             result = true;
-
         return result;
     }
 
