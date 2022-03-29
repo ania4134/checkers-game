@@ -19,7 +19,6 @@ public class Game {
     private int oldY = NOTHING_SELECTED;
 
     public Game(Board board, GridPane grid) {
-
         this.board = board;
         this.grid = grid;
     }
@@ -47,7 +46,7 @@ public class Game {
                     ImageView imageView = new ImageView(image);
                     if (col == oldX && row == oldY) {
                         grid.add(new Rectangle(75, 75, Paint.valueOf(Color.RED.toString())), col, row);
-                    }else{
+                    } else {
                         grid.add(imageView, col, row);
                     }
                 }
@@ -62,11 +61,11 @@ public class Game {
             displayOnBoard();
         } else {
             if (board.moveWithBeat(oldX, oldY, x, y)) {
-                if(!board.isHitAvailableForPawnFrom(x, y)) {
+                if (!board.isHitAvailableForPawnFrom(x, y)) {
                     board.switchPlayer();
                 }
             } else if (board.moveQueenWithBeat(oldX, oldY, x, y)) {
-                if(!board.isHitAvailableforQueenFrom(x, y)) {
+                if (!board.isHitAvailableforQueenFrom(x, y)) {
                     board.switchPlayer();
                 }
             } else if (board.move(oldX, oldY, x, y) || board.moveQueen(oldX, oldY, x, y)) {

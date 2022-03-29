@@ -16,7 +16,6 @@ import java.awt.*;
 public class GUI extends Application {
 
     private Image board = new Image("file:src/main/resources/background.png");
-
     private FlowPane pawns = new FlowPane(Orientation.HORIZONTAL);
 
     public static void main(String[] args) {
@@ -28,10 +27,8 @@ public class GUI extends Application {
         BackgroundSize backgroundSize = new BackgroundSize(600, 600, true, true, true, false);
         BackgroundImage backgroundImage = new BackgroundImage(board, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         Background background = new Background(backgroundImage);
-
         GridPane grid = new GridPane();
         grid.setBackground(background);
-
         Scene scene = new Scene(grid, 600, 600, Color.BLACK);
 
         for(int i=0; i<8; i++) {

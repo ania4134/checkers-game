@@ -142,7 +142,7 @@ public class Board {
         result = result && isEmptyDirectionField(col2, row2);
         result = result && isInBounds(col2, row2);
         result = result && isDiagonally(col1, row1, col2, row2);
-        result = result && noColleagueDiagonally(col1, row1, col2, row2);
+        result = result && noColleagueOnWay(col1, row1, col2, row2);
 
         if (result) {
             setFigure(col2, row2, figure);
@@ -219,7 +219,7 @@ public class Board {
         }
     }
 
-    public boolean noColleagueDiagonally(int col1, int row1, int col2, int row2) {
+    public boolean noColleagueOnWay(int col1, int row1, int col2, int row2) {
         boolean result = false;
         if ((col2 - col1) > 0) {
             if ((row2 - row1) > 0) {
@@ -331,25 +331,25 @@ public class Board {
 
         for (int i = col1 + 1; i < 7; i++) {
             for (int j = row1 + 1; j < 7; j++) {
-                result = isEnemy(col1, row1, i, j) && getFigure(i+1, j+1).getColor()==null;
+                result = isEnemy(col1, row1, i, j) && getFigure(i + 1, j + 1).getColor() == null;
             }
         }
         if (result == false) {
             for (int i = col1 + 1; i < 7; i++) {
                 for (int j = row1 - 1; j > 0; j--) {
-                    result = isEnemy(col1, row1, i, j) && getFigure(i+1, j-1).getColor()==null;
+                    result = isEnemy(col1, row1, i, j) && getFigure(i + 1, j - 1).getColor() == null;
                 }
             }
-        } else if(result == false) {
+        } else if (result == false) {
             for (int i = col1 - 1; i > 0; i--) {
                 for (int j = row1 + 1; j < 7; j++) {
-                        result = isEnemy(col1, row1, i, j) && getFigure(i-1, j+1).getColor()==null;
+                    result = isEnemy(col1, row1, i, j) && getFigure(i - 1, j + 1).getColor() == null;
                 }
             }
-        }else if(result == false) {
+        } else if (result == false) {
             for (int i = col1 - 1; i > 0; i--) {
                 for (int j = row1 - 1; j > 0; j--) {
-                    result = isEnemy(col1, row1, i, j) && getFigure(i-1, j-1).getColor()==null;
+                    result = isEnemy(col1, row1, i, j) && getFigure(i - 1, j - 1).getColor() == null;
                 }
             }
         }
@@ -368,8 +368,6 @@ public class Board {
     public void checkWinner() {
         int whitePawnsNumber = 0;
         int blackPawnsNumber = 0;
-        boolean whiteWon = false;
-        boolean blackWon = false;
 
         for (int col = 0; col < 8; col++) {
             for (int row = 0; row < 8; row++) {
@@ -380,9 +378,9 @@ public class Board {
                 }
             }
         }
-        if (whitePawnsNumber==0) {
+        if (whitePawnsNumber == 0) {
             showGameOver(BLACK);
-        } else if (blackPawnsNumber==0) {
+        } else if (blackPawnsNumber == 0) {
             showGameOver(WHITE);
         }
     }
@@ -393,13 +391,13 @@ public class Board {
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setHgap(10);
         gridPane.setVgap(10);
-        gridPane.setPadding(new Insets(25,25,25,25));
+        gridPane.setPadding(new Insets(25, 25, 25, 25));
 
         Scene scene = new Scene(gridPane, 250, 250);
         primaryStage.setScene(scene);
         String text = null;
 
-        if(whoseWon==WHITE) {
+        if (whoseWon == WHITE) {
             text = "Koniec gry \nWygraly biale!";
         } else {
             text = "Koniec gry \nWygraly czarne!";
