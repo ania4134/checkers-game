@@ -3,18 +3,19 @@ package com.kodilla.checkers;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.layout.GridPane;
-import javafx.scene.control.Button;
-import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.kodilla.checkers.FigureColor.*;
+import static com.kodilla.checkers.FigureColor.BLACK;
+import static com.kodilla.checkers.FigureColor.WHITE;
 
 public class Board {
     private FigureColor whoseMove = WHITE;

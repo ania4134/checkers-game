@@ -1,17 +1,12 @@
 package com.kodilla.checkers;
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javax.management.monitor.GaugeMonitor;
-import java.awt.*;
 
 public class GUI extends Application {
 
